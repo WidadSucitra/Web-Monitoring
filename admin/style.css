@@ -1,0 +1,195 @@
+.navbar{
+    background-color: #043277;
+    color: white;
+    height: 60px;
+    display: inherit!important;
+}
+
+.logo-bps{
+    height: 30px;
+    margin: 7px 0 0 ;
+    padding: 0;
+    width: fit-content;
+    line-height: 60px;
+}
+
+.brand-bps{
+    display: inline-block;
+    font-size: 12px;
+    padding-left: 2%;
+    vertical-align: sub;
+}
+
+.brand-bps i{
+    vertical-align: inherit;
+}
+
+section.login-admin {
+    background-color: white;
+}
+
+section.login-admin .bagian-kiri h2.greeting{
+    padding: 7% 0 2%;
+    font-weight: bold;
+    color: #E18939;
+    font-size: 20px;
+}
+
+section.login-admin .bagian-kiri h2.greeting span{
+    color: #75B547;
+}
+
+section.login-admin .bagian-kiri label{
+    display: block;
+    padding-top: 5px;
+    font-size: 10px;
+}
+
+section.login-admin .bagian-kiri input{
+    width: 50%;
+    height: 25px;
+    border: 2px solid rgb(171, 171, 171);
+    border-radius: 5px;
+}
+
+section.login-admin .bagian-kanan{
+    position: absolute;
+    right: 0;
+    padding-top: 120px;
+}
+
+section.login-admin .bagian-kanan img{
+    width: 60%;
+    position: absolute;
+    right: 0;
+}
+
+@media (min-width: 600px) and (max-width:700px) {
+    
+    section.login-admin .col-md-6.bagian-kiri label{
+        padding-top: 10px;
+        font-size: 17px;
+    }
+    
+    section.login-admin .col-md-6.bagian-kiri input{
+        width: 50%;
+        height: 30px;
+    }
+    section.login-admin .col-md-5.bagian-kanan img{
+        width: 60%;
+        padding-top: 90px;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .navbar{
+        height: 70px;
+    }
+    
+    .logo-bps{
+        height: 40px;
+        margin: 0 ;
+        line-height:normal;
+    }
+    
+    .brand-bps{
+        font-size: 15px;
+    }
+
+    section.login-admin .bagian-kiri h2.greeting{
+        padding: 12% 0 2%;
+        font-size: 35px;
+    }
+    
+    section.login-admin .bagian-kiri label{
+        padding-top: 15px;
+        font-size: 20px;
+    }
+    
+    section.login-admin .bagian-kiri input{
+        width: 100%;
+        height: 40px;
+    }
+    
+    section.login-admin .bagian-kanan{
+        padding-top: 30px;
+    }
+    
+    section.login-admin .bagian-kanan img{
+        width: 90%;
+    }
+}
+
+@media (min-width: 1000px) {
+    
+    .navbar{
+        height: 90px;
+    }
+
+    .logo-bps{
+        height: 60px;
+        margin: 0 ;
+        line-height:normal;
+    }
+    
+    .brand-bps{
+        font-size: 20px;
+    }
+
+    section.login-admin .bagian-kiri h2.greeting{
+        padding: 20% 0 2%;
+        font-size: 40px;
+    }
+    
+    section.login-admin .bagian-kiri label{
+        padding-top: 20px;
+        font-size: 20px;
+    }
+    
+    section.login-admin .bagian-kiri input{
+        height: 50px;
+    }
+    
+    section.login-admin .bagian-kanan{
+        padding-top: 30px;
+    }
+    
+    section.login-admin .bagian-kanan img{
+        width: 100%;
+    }
+    
+}
+
+@media (min-width: 1300px) {
+    
+    .navbar{
+        height: 100px;
+    }
+
+    .logo-bps{
+        height: 60px;
+        vertical-align: revert;
+    }
+    
+    .brand-bps{
+        font-size: 20px;
+    }
+
+    .brand-bps{
+        font-size: 30px;
+    }
+    
+    section.login-admin .bagian-kiri h2.greeting{
+        padding: 15% 0 2%;
+        font-weight: bold;
+    }
+    
+    section.login-admin .bagian-kiri input{
+        height: 50px;
+    }
+    
+    section.login-admin .bagian-kanan img{
+        width: 100%;
+    }
+}

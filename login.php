@@ -1,6 +1,37 @@
 <?php
 include "navbar.php";
 include "config.php";
+
+
+if(isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['pass'];
+
+    $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
+    $count =  mysqli_num_rows($result);
+
+	if ($count > 0) {
+		$row = mysqli_fetch_array($result);
+        $role = $row['role'];
+
+        if ($role == 'admin'){
+            $_SESSION['log'] =  'Logged';
+            $_SESSION['role'] = 'admin';
+            header("Location: admin");
+        }else{
+
+        }
+
+
+		// $_SESSION['username'] = $row['username'];
+		// header("Location: dashboard/index.php");
+	} else {
+		echo "<script>alert('Woops! Email Atau Password anda Salah.')</script>";
+	}
+}
+
+
 ?>
     <section class="login-admin">
         <div class="container">
@@ -10,13 +41,17 @@ include "config.php";
                         Hello, <br> <span>Welcome,</span> Back!
                     </h2>
         
-                    <div class="form-login-admin">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="">
-            
-                        <label for="pass">Password</label>
-                        <input type="password" name="pass" id="">
-                    </div>
+                    <form action="" method="post">
+                        <div class="form-login-admin">
+                            <label for="email">Email</label>
+                            <input placeholder="Enter email" type="email" name="email" id="" required>
+                
+                            <label for="pass">Password</label>
+                            <input placeholder="Enter password" type="password" name="pass" id="" required>
+
+                            <button type="submit" name="login" >Login</button>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="col-md-5 bagian-kanan">

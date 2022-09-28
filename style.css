@@ -192,4 +192,10 @@ section.login-admin .bagian-kanan img{
     section.login-admin .bagian-kanan img{
         width: 100%;
     }
+
+    section.Judul{
+        padding: 20% 0 2%;
+        font-size: 30px;
+       
+    }
 }

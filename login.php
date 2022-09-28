@@ -6,6 +6,7 @@ include "config.php";
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
+    // $password = md5($_POST['pass']);
 
     $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
@@ -15,12 +16,14 @@ if(isset($_POST['login'])) {
 		$row = mysqli_fetch_array($result);
         $role = $row['role'];
 
-        if ($role == 'admin'){
+        if ($role == 'superadmin'){
+            $_SESSION['log'] =  'Logged';
+            $_SESSION['role'] = 'superadmin';
+            header("Location: superadmin");
+        }else{
             $_SESSION['log'] =  'Logged';
             $_SESSION['role'] = 'admin';
             header("Location: admin");
-        }else{
-
         }
 
 

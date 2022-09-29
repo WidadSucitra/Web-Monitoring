@@ -2,6 +2,10 @@
 include "navbar.php";
 include "config.php";
 
+// if($_SESSION['role'] = 'superadmin' && isset($_SESSION['username'])){
+//     header("Location: superadmin");
+// }
+
 
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -19,6 +23,7 @@ if(isset($_POST['login'])) {
         if ($role == 'superadmin'){
             $_SESSION['log'] =  'Logged';
             $_SESSION['role'] = 'superadmin';
+            $_SESSION['username'] = $username;
             header("Location: superadmin");
         }else{
             $_SESSION['log'] =  'Logged';

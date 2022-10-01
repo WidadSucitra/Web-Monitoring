@@ -10833,6 +10833,8 @@ a:focus {
 
 /* STYLE */
 
+/* LOGIN ADMIN */
+
 section.bagian-sidebar {
   background-color: #1c294e;
 }
@@ -10846,6 +10848,34 @@ section.bagian-sidebar {
   margin: 0;
   padding: 0;
 }
+
+
+/* DASHBOARD ADMIN */
+section.tabel-admin .ikon_edit{
+  background-color: yellow;
+  border: none;
+  border-radius: 2px;
+}
+
+section.tabel-admin .ikon_delete{
+  background-color: red;
+  border: none;
+  border-radius: 2px;
+}
+
+section.tabel-admin .btn-index form{
+  text-align: center;
+}
+
+section.tabel-admin .ikon_delete .fa-trash, section.tabel-admin .ikon_edit .fa-pen{
+  color: white;
+}
+
+section.tabel-admin .card-header div.judul{
+  width: 45%;
+  display: inline-block;
+}
+
 
 
 

@@ -24,7 +24,7 @@ if(isset($_POST['login'])) {
             $_SESSION['log'] =  'Logged';
             $_SESSION['role'] = 'superadmin';
             $_SESSION['username'] = $username;
-            header("Location: superadmin");
+            header("Location: superadmin/dashboard");
         }else{
             $_SESSION['log'] =  'Logged';
             $_SESSION['role'] = 'admin';
@@ -57,7 +57,7 @@ if(isset($_POST['login'])) {
                             <label for="pass">Password</label>
                             <input placeholder="Enter password" type="password" name="pass" id="" required>
 
-                            <button type="submit" name="login" >Login</button>
+                            <button class="tombol-login" type="submit" name="login" >Login</button>
                         </div>
                     </form>
                 </div>

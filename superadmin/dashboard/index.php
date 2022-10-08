@@ -1,8 +1,8 @@
 <?php
+ob_start();
 
-
-include "../includes/navbar.php";
 include "../../config.php";
+include "../includes/navbar.php";
 
 if(isset($_POST['submit_delete'])){
     $dashboard_id = $_POST['submit_delete'];

@@ -2,28 +2,45 @@
 include "navbar.php";
 include "config.php";
 
+// if($_SESSION['role'] = 'superadmin' && isset($_SESSION['username'])){
+//     header("Location: superadmin");
+// }
+
 
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
-    $password = $_POST['pass'];
+    // $md5_password = $_POST['pass'];
+    // $password =$_POST['pass'];
+
+    $password = md5($_POST['pass']);
 
     $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
-    $count =  mysqli_num_rows($result);
+    // $count =  mysqli_num_rows($result);
 
-	if ($count > 0) {
-		$row = mysqli_fetch_array($result);
+	if ($result->num_rows > 0) {
+        $row = mysqli_fetch_array($result);
         $role = $row['role'];
 
-        if ($role == 'admin'){
-            $_SESSION['log'] =  'Logged';
-            $_SESSION['role'] = 'admin';
-            header("Location: admin");
-        }else{
+        // if ($row['email'] == $email && $password == $md5_password ){
+            if ($role == 'superadmin'){
+                $_SESSION['log'] =  'Logged';
+                $_SESSION['role'] = 'superadmin';
+                $_SESSION['username'] = $username;
+                header("Location: superadmin/dashboard");
+            } else if ($role == 'admin'){
+                $_SESSION['log'] =  'Logged';
+                $_SESSION['role'] = 'admin';
+                $_SESSION['username'] = $username;
+                header("Location: admin/dashboard");
+            }else{
+                // $_SESSION['log'] =  'Logged';
+                // $_SESSION['role'] = 'admin';
+                // header("Location: admin");
+                echo "<script>alert('Anda siapa?')</script>";
 
-        }
-
-
+            }
+        // }
 		// $_SESSION['username'] = $row['username'];
 		// header("Location: dashboard/index.php");
 	} else {
@@ -44,12 +61,12 @@ if(isset($_POST['login'])) {
                     <form action="" method="post">
                         <div class="form-login-admin">
                             <label for="email">Email</label>
-                            <input placeholder="Enter email" type="email" name="email" id="" required>
+                            <input placeholder="Enter email" type="email" name="email" id="email" required>
                 
                             <label for="pass">Password</label>
-                            <input placeholder="Enter password" type="password" name="pass" id="" required>
+                            <input placeholder="Enter password" type="password" name="pass" id="pass" required>
 
-                            <button type="submit" name="login" >Login</button>
+                            <button class="tombol-login" type="submit" name="login" >Login</button>
                         </div>
                     </form>
                 </div>

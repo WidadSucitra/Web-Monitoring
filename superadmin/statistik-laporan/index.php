@@ -45,7 +45,11 @@ include "../../config.php";
                                 <button class="ml-3 btn btn-primary" type="submit" name="filter" >Filter</button>
                             </form>
                             <div class="card-body">
-                                
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 mt-5">
+                                        <canvas id="myChart" width="250" height="200"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,6 +58,67 @@ include "../../config.php";
 
             </div>
             <!-- End of Main Content -->
+            
+            <?php
+
+                if(isset($_POST['filter'])){
+                    $wilkerstat = $_POST['wilkerstat'];
+                    $tanggal = $_POST['tanggal'];
+
+                    $sql = "SELECT * FROM report WHERE wilkerstat='$wilkerstat' AND tanggal='$tanggal' ";
+                    $result = mysqli_query($conn,$sql);
+
+                    if(!$result) {
+                        die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                    }
+
+                    // $array=array();
+                    while ($data = mysqli_fetch_assoc($result)) {
+                        // $array[]=$data;
+                        $isi_labels[] = $data["nama_petugas"];
+                        $isi_data1[] =$data["before_verif"];
+                        $isi_data2[] =$data["after_verif"];
+                    }
+
+                    // echo json_encode($array);
+
+                    // echo ($data);
+                }
+            ?>
+
+
+
+            <script>
+                const nama_petugas = <?php echo json_encode($isi_labels) ?>;
+                const before_verif = <?php echo json_encode($isi_data1) ?>;
+                const after_verif = <?php echo json_encode($isi_data2) ?>;
+                // console.log(nama_petugas);
+                // console.log(before_verif);
+                // console.log(after_verif);
+
+                
+                    var canvasElement = document.getElementById("myChart");
+
+                    var myChart = new Chart(canvasElement,{
+                        type: "bar",
+                        data: {
+                            labels: nama_petugas,
+                            datasets:[
+                                {
+                                    label: "Sebelum Verifikasi KK",
+                                    data: before_verif,
+                                    backgroundColor: ["#609773"]
+                                },
+                                {
+                                    label: "Setelah Verifikasi KK",
+                                    data: after_verif,
+                                    backgroundColor: ["yellow"]
+                                },
+                            ],
+                        },
+                    });
+            </script>
+            
 
 <?php
     include "../includes/footer.php";

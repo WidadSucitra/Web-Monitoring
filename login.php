@@ -14,7 +14,6 @@ if(isset($_SESSION['username'])) {
     header("Location: superadmin/dashboard");
 }
 
-
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     // $md5_password = $_POST['pass'];
@@ -43,9 +42,6 @@ if(isset($_POST['login'])) {
             // } else {
             //     echo "<script>alert('Anda siapa?')</script>";
             // }
-
-
-
 
             if ($role == 'superadmin'){
                 $_SESSION['log'] =  'Logged';

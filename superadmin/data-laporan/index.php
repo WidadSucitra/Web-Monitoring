@@ -36,6 +36,33 @@ if(isset($_POST['submit_delete'])){
                                     <h6 class="m-0 font-weight-bold text-primary">Laporan Progress</h6>
                                 </div>
                             </div>
+                            <form class="container" action="" method="post">
+                                <div class="form-group col-md-6 mt-3">
+                                    <label for="wilkerstat">Wilkerstat</label>
+                                    <select name="wilkerstat" id="" class="form-control">
+                                            <option value="">--select wilkerstat--</option>
+                                            <?php
+                                                $query = "SELECT DISTINCT wilkerstat FROM report";
+                                                $result = mysqli_query($conn, $query);
+    
+                                                if(!$result) {
+                                                    die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                                                }
+    
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                                <option value="<?php echo $row['wilkerstat']; ?>"> <?php echo $row['wilkerstat']; ?> </option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" id="" required>
+                                </div>
+                                <button class="ml-3 btn btn-primary" type="submit" name="filter" >Filter</button>
+                            </form>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -66,8 +93,25 @@ if(isset($_POST['submit_delete'])){
                                         <tbody>
     
                                             <?php
-                                                $query = "SELECT * FROM report ORDER BY id ASC";
-                                                $result = mysqli_query($conn, $query);
+                                            if(isset($_POST['filter'])){
+                                                $wilkerstat = $_POST['wilkerstat'];
+                                                $tanggal = $_POST['tanggal'];
+
+                                                // echo ($tanggal);
+
+                                                // $date= "'".date('Y-m-d', strtotime(str_replace('-', '/', $tanggal)));
+
+                                                // $date= date_format($tanggal,"Y/m/d");
+
+                                                // echo ($date);
+                                            
+
+                                                $sql = "SELECT * FROM report WHERE wilkerstat='$wilkerstat' AND tanggal='$tanggal' ";
+                                                $result = mysqli_query($conn,$sql);
+
+    
+                                                // $query = "SELECT * FROM report ORDER BY id ASC";
+                                                // $result = mysqli_query($conn, $query);
     
                                                 if(!$result) {
                                                     die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
@@ -100,6 +144,7 @@ if(isset($_POST['submit_delete'])){
                                             
                                             <?php
                                             }
+                                        }
                                             ?>
                                            
                                         </tbody>

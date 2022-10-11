@@ -1,16 +1,15 @@
 <?php
 
-// session_start();
+session_start();
+// ob_start();
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: ../../login.php");
-// }
+// if(!isset($_SESSION["username"])) header("Location: ../../login.php");
 
 ?>
 
 <?php
     // session_start();
-    ob_start();
+
 ?>
 
 
@@ -35,6 +34,15 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script> -->
 
 </head>
 

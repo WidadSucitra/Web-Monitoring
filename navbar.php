@@ -15,4 +15,5 @@
     <nav class="navbar">
         <img class="logo-bps" src="img/logo.png" alt="">
         <h1  class="brand-bps"> <i>BADAN PUSAT STATISTIK <br>KABUPATEN GOWA</i></h1> 
-    </nav>      
+    </nav>  
+        

@@ -253,4 +253,32 @@ section.login-admin .bagian-kanan img{
     section.login-admin .bagian-kanan img{
         width: 100%;
     }
+
+    section.Judul{
+        padding: 10% 0 2%;
+        font-size: 30px;
+    }
+    .box{
+        height: 100px;
+        width: 500px;
+        margin: 0 auto;
+        font-size: 10px;
+        margin-left: 0;
+        top: 50%;
+        transform: translate(50, -50%);
+    }
+    .judul{
+        padding: 5% 8 5%;
+        font-size: 40px;
+        height: 100px;
+        width : 1000px;
+    }
+    .bux{
+  
+        font-size: 15px;
+        height: 300px;
+        width : 1000px;
+
+        <input type="tanggal" name="tanggal" id="">
+    }
 }

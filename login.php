@@ -8,12 +8,11 @@ include "config.php";
 
 session_start();
 
-error_reporting(0);
+// error_reporting(0);
 
 if(isset($_SESSION['username'])) {
-    header("Location: superadmin/dashboar");
+    header("Location: superadmin/dashboard");
 }
-
 
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -44,18 +43,15 @@ if(isset($_POST['login'])) {
             //     echo "<script>alert('Anda siapa?')</script>";
             // }
 
-
-
-
             if ($role == 'superadmin'){
                 $_SESSION['log'] =  'Logged';
                 $_SESSION['role'] = 'superadmin';
-                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
                 header("Location: superadmin/dashboard");
             } else if ($role == 'admin'){
                 $_SESSION['log'] =  'Logged';
                 $_SESSION['role'] = 'admin';
-                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
                 header("Location: admin/dashboard");
             }else{
                 // $_SESSION['log'] =  'Logged';

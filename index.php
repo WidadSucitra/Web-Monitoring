@@ -7,12 +7,14 @@ if(isset($_POST['proses'])){
     nama_petugas = '$_POST[nama_petugas]',
     kode_petugas = '$_POST[kode_petugas]',
     kecamatan = '$_POST[kecamatan]',
+    kode_kecamatan = '$_POST[kode_kecamatan]',
     desa = '$_POST[desa]',
+    kode_desa = '$_POST[kode_desa]',
     wilkerstat = '$_POST[wilkerstat]',
     before_verif = '$_POST[before_verif]',
     after_verif = '$_POST[after_verif]'");
     
-    echo "<script> alert('Data barang baru telah tersimpan')</script>";
+    echo "<script> alert('Laporan progress anda telah tersimpan')</script>";
     
     }
 ?>
@@ -38,18 +40,21 @@ if(isset($_POST['proses'])){
             <input type="teks" name="kode_petugas" id="">
         </div>
         <div class="box">
-            <label for="desa">Desa:</label>
-            <input type="teks" name="desa" id="">
-        </div>
-        <div class="box">
             <label for="kecamatan">Kecamatan:</label>
             <input type="teks" name="kecamatan" id="">
         </div>
         <div class="box">
-            <label for="progress">Progress (jumlah kartu keluarga yang telah di data):</label>
-            <input type="teks" name="progress" id="">
+            <label for="kode_kecamatan">Kode Kecamatan:</label>
+            <input type="teks" name="kode_kecamatan" id="">
         </div>
-        
+        <div class="box">
+            <label for="desa">Desa:</label>
+            <input type="teks" name="desa" id="">
+        </div>
+        <div class="box">
+            <label for="kode_desa">Kode Desa:</label>
+            <input type="teks" name="kode_desa" id="">
+        </div>
         <div class="box">
             <label for="wilkerstat">Kode Wilkerstat:</label>
             <input type="teks" name="wilkerstat" id="">

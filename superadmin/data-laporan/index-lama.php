@@ -38,11 +38,11 @@ if(isset($_POST['submit_delete'])){
                             </div>
                             <form class="container" action="" method="post">
                                 <div class="form-group col-md-6 mt-3">
-                                    <label for="desa">Desa</label>
-                                    <select name="desa" id="" class="form-control">
-                                            <option value="">--select desa--</option>
+                                    <label for="wilkerstat">Wilkerstat</label>
+                                    <select name="wilkerstat" id="" class="form-control">
+                                            <option value="">--select wilkerstat--</option>
                                             <?php
-                                                $query = "SELECT DISTINCT desa FROM report";
+                                                $query = "SELECT DISTINCT wilkerstat FROM report";
                                                 $result = mysqli_query($conn, $query);
     
                                                 if(!$result) {
@@ -51,7 +51,7 @@ if(isset($_POST['submit_delete'])){
     
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
-                                                <option value="<?php echo $row['desa']; ?>"> <?php echo $row['desa']; ?> </option>
+                                                <option value="<?php echo $row['wilkerstat']; ?>"> <?php echo $row['wilkerstat']; ?> </option>
                                             <?php
                                             }
                                             ?>
@@ -94,7 +94,7 @@ if(isset($_POST['submit_delete'])){
     
                                             <?php
                                             if(isset($_POST['filter'])){
-                                                $desa = $_POST['desa'];
+                                                $wilkerstat = $_POST['wilkerstat'];
                                                 $tanggal = $_POST['tanggal'];
 
                                                 // echo ($tanggal);
@@ -106,7 +106,7 @@ if(isset($_POST['submit_delete'])){
                                                 // echo ($date);
                                             
 
-                                                $sql = "SELECT * FROM report WHERE desa='$desa' AND tanggal='$tanggal' ";
+                                                $sql = "SELECT * FROM report WHERE wilkerstat='$wilkerstat' AND tanggal='$tanggal' ";
                                                 $result = mysqli_query($conn,$sql);
 
     

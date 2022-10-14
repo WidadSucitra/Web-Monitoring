@@ -25,7 +25,7 @@ if(isset($_POST['proses'])){
             <div class="row">
                 <div class="col-md-4 bagian-kiri">
 <h2 class="judul">
-        <br> <span>Laporan Progress Pendataan</span>
+        <br> <span>Laporan Progress Pendataan (Kuisioner K)</span>
     </h2>
 
 <form action="" method="post">

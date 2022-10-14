@@ -1,98 +1,48 @@
 <?php
 include "../includes/navbar.php";
 include "../../config.php";
+
+$sql = "SELECT * FROM laporan_harian";
+$result = mysqli_query($conn, $sql);
 ?>
 
-        <div class="container">
-        
-<h2 class="judul">
-        <br> <span>File Laporan Harian</span>
-    </h2>
-
+<!-- Begin Page Content -->
+<section class="upload_file">
+                    <div class="container-fluid">
     
-<div class="alert alert-success" role="alert">
-  Data Laporan 15/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 16/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 17/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 18/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 19/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 20/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 21/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 22/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 23/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 24/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 25/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 26/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 27/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 28/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 29/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 30/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-<div class="alert alert-success" role="alert">
-  Data Laporan 31/10/2022 <a href="#" class="alert-link"></a>.
-  <button class="btn btn-light">Unduh</button>
-</div>
-   
-    <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-   
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <div class="col-md judul">
+                                    <h6 class="m-0 font-weight-bold text-primary">Laporan Harian</h6>
+                                </div>
+                                <div class="col-md judul">
+                                    <a href="create.php"><h6 class="m-0 font-weight-bold text-primary text-right">+ Tambah Laporan Harian</h6></a>
+                                </div>
+                            </div>
+                            
+                        <?php foreach($result as $key=>$value){ ?>
+                            <div class="card-body mx-3">
+                                <div class="alert alert-success row" role="alert">
+                                    <a href="#" class="alert-link col-md-10 nama_csv">
+                                        <?php echo $value['tanggal']; ?>
+                                    </a>
+                                    <Td><A Href="DownloadFile.csv?Url=<?Php Echo $value['berkas']; ?>">Download</A></Td>
+                                </div> 
+                            </div>
+                        <?php } ?>
+                        </div>
+                        
+                    </div>
+                </section>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+<?php
+    include "../includes/footer.php";
+?>
 
     
 

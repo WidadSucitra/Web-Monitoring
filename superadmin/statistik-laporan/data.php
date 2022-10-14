@@ -1,25 +1,25 @@
 <?php
 
-if(isset($_POST['filter'])){
-    $wilkerstat = $_POST['wilkerstat'];
-    $tanggal = $_POST['tanggal'];
+// if(isset($_POST['filter'])){
+//     $wilkerstat = $_POST['wilkerstat'];
+//     $tanggal = $_POST['tanggal'];
 
-    $sql = "SELECT * FROM report WHERE wilkerstat='$wilkerstat' AND tanggal='$tanggal' ";
-    $result = mysqli_query($conn,$sql);
+//     $sql = "SELECT * FROM report WHERE wilkerstat='$wilkerstat' AND tanggal='$tanggal' ";
+//     $result = mysqli_query($conn,$sql);
 
-    if(!$result) {
-        die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
-    }
+//     if(!$result) {
+//         die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+//     }
 
-    $array=array();
-    while ($data = mysqli_fetch_assoc($result)) {
-        $array[]=$data;
-    }
+//     $array=array();
+//     while ($data = mysqli_fetch_assoc($result)) {
+//         $array[]=$data;
+//     }
 
-    echo json_encode($array);
+//     echo json_encode($array);
 
-    // echo ($data);
-}
+//     // echo ($data);
+// }
     ?>
 
 

@@ -77,6 +77,10 @@ section.login-admin .bagian-kanan img{
     right: 0;
 }
 
+section.laporan-progres-pendataan {
+    margin-bottom: 150px;
+}
+
 @media (min-width: 600px) and (max-width:700px) {
     
     section.login-admin .col-md-6.bagian-kiri label{
@@ -279,6 +283,6 @@ section.login-admin .bagian-kanan img{
         height: 300px;
         width : 1000px;
 
-        <input type="tanggal" name="tanggal" id="">
+        /* <input type="tanggal" name="tanggal" id=""> */
     }
 }

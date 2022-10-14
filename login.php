@@ -7,6 +7,7 @@ include "config.php";
 // }
 
 session_start();
+// session_destroy();
 
 // error_reporting(0);
 
@@ -14,7 +15,8 @@ if(isset($_SESSION['username'])) {
     header("Location: superadmin/dashboard");
 }
 
-if(isset($_POST['login'])) {
+// var_dump($_POST['login']);
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     // $md5_password = $_POST['pass'];
     // $password =$_POST['pass'];
@@ -27,11 +29,11 @@ if(isset($_POST['login'])) {
     $row = mysqli_fetch_array($result);
     $role = $row['role'];
     $pass_now = $row['password'];
+    $username = $row['username']; 
 
 	if ($count> 0) {
         if(password_verify($password,$pass_now)){
             // jika pass benar
-            session_start();
             // $_SESSION['username'] = $row['username'];
             // $_SESSION['role'] = $row['role'];
 
@@ -43,15 +45,18 @@ if(isset($_POST['login'])) {
             //     echo "<script>alert('Anda siapa?')</script>";
             // }
 
+
+
+            // var_dump($role);
             if ($role == 'superadmin'){
                 $_SESSION['log'] =  'Logged';
                 $_SESSION['role'] = 'superadmin';
-                $_SESSION['email'] = $email;
+                $_SESSION['username'] = $username;
                 header("Location: superadmin/dashboard");
             } else if ($role == 'admin'){
                 $_SESSION['log'] =  'Logged';
                 $_SESSION['role'] = 'admin';
-                $_SESSION['email'] = $email;
+                $_SESSION['username'] = $username;
                 header("Location: admin/dashboard");
             }else{
                 // $_SESSION['log'] =  'Logged';
@@ -101,7 +106,7 @@ if(isset($_POST['login'])) {
                         Hello, <br> <span>Welcome,</span> Back!
                     </h2>
         
-                    <form action="" method="post">
+                    <form action="" method="POST">
                         <div class="form-login-admin">
                             <label for="email">Email</label>
                             <input placeholder="Enter email" type="email" name="email" id="email" required>

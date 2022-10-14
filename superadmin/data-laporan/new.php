@@ -38,11 +38,11 @@ if(isset($_POST['submit_delete'])){
                             </div>
                             <form class="container" action="" method="post">
                                 <div class="form-group col-md-6 mt-3">
-                                    <label for="desa">Desa</label>
-                                    <select name="desa" id="" class="form-control">
-                                            <option value="">--select desa--</option>
+                                    <label for="kode_kecamatan">Kode Kecamatan</label>
+                                    <select name="kode_kecamatan" id="" class="form-control">
+                                            <option value="">--select kode kecamatan--</option>
                                             <?php
-                                                $query = "SELECT DISTINCT desa FROM report";
+                                                $query = "SELECT DISTINCT kode_kecamatan FROM report";
                                                 $result = mysqli_query($conn, $query);
     
                                                 if(!$result) {
@@ -51,7 +51,47 @@ if(isset($_POST['submit_delete'])){
     
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
-                                                <option value="<?php echo $row['desa']; ?>"> <?php echo $row['desa']; ?> </option>
+                                                <option value="<?php echo $row['kode_kecamatan']; ?>"> <?php echo $row['kode_kecamatan']; ?> </option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6 mt-3">
+                                    <label for="kode_desa">Kode Desa</label>
+                                    <select name="kode_desa" id="" class="form-control">
+                                            <option value="">--select kode_desa--</option>
+                                            <?php
+                                                $query = "SELECT DISTINCT kode_desa FROM report";
+                                                $result = mysqli_query($conn, $query);
+    
+                                                if(!$result) {
+                                                    die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                                                }
+    
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                                <option value="<?php echo $row['kode_desa']; ?>"> <?php echo $row['kode_desa']; ?> </option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6 mt-3">
+                                    <label for="wilkerstat">Wilkerstat</label>
+                                    <select name="wilkerstat" id="" class="form-control">
+                                            <option value="">--select wilkerstat--</option>
+                                            <?php
+                                                $query = "SELECT DISTINCT wilkerstat FROM report";
+                                                $result = mysqli_query($conn, $query);
+    
+                                                if(!$result) {
+                                                    die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                                                }
+    
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                                <option value="<?php echo $row['wilkerstat']; ?>"> <?php echo $row['wilkerstat']; ?> </option>
                                             <?php
                                             }
                                             ?>
@@ -70,7 +110,9 @@ if(isset($_POST['submit_delete'])){
                                             <tr>
                                                 <th class="align-middle text-center " >Nama Petugas</th>
                                                 <th class="align-middle text-center " >Kode Petugas</th>
+                                                <th class="align-middle text-center " >Kode Kecamatan</th>
                                                 <th class="align-middle text-center " >Kecamatan</th>
+                                                <th class="align-middle text-center " >Kode Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
@@ -82,7 +124,9 @@ if(isset($_POST['submit_delete'])){
                                             <tr>
                                                 <th class="align-middle text-center " >Nama Petugas</th>
                                                 <th class="align-middle text-center " >Kode Petugas</th>
+                                                <th class="align-middle text-center " >Kode Kecamatan</th>
                                                 <th class="align-middle text-center " >Kecamatan</th>
+                                                <th class="align-middle text-center " >Kode Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
@@ -94,7 +138,7 @@ if(isset($_POST['submit_delete'])){
     
                                             <?php
                                             if(isset($_POST['filter'])){
-                                                $desa = $_POST['desa'];
+                                                $wilkerstat = $_POST['wilkerstat'];
                                                 $tanggal = $_POST['tanggal'];
 
                                                 // echo ($tanggal);
@@ -106,7 +150,7 @@ if(isset($_POST['submit_delete'])){
                                                 // echo ($date);
                                             
 
-                                                $sql = "SELECT * FROM report WHERE desa='$desa' AND tanggal='$tanggal' ";
+                                                $sql = "SELECT * FROM report WHERE wilkerstat='$wilkerstat' AND tanggal='$tanggal' AND tanggal='$tanggal' ";
                                                 $result = mysqli_query($conn,$sql);
 
     
@@ -123,17 +167,19 @@ if(isset($_POST['submit_delete'])){
                                             <tr>
                                                 <td><?php echo $row['nama_petugas']; ?></td>
                                                 <td><?php echo $row['kode_petugas']; ?></td>
+                                                <td><?php echo $row['kode_kecamatan']; ?></td>
                                                 <td><?php echo $row['kecamatan']; ?></td>
+                                                <td><?php echo $row['kode_desa']; ?></td>
                                                 <td><?php echo $row['desa']; ?></td>
                                                 <td><?php echo $row['wilkerstat']; ?></td>
                                                 <td><?php echo $row['before_verif']; ?></td>
                                                 <td><?php echo $row['after_verif']; ?></td>
                                                 <td class="text-center align-middle">
-                                                    <!-- <a href="edit.php?id=<?= $row['id'] ?>">
+                                                    <a href="edit.php?id=<?= $row['id'] ?>">
                                                         <button  class="ikon_edit">
                                                             <i class="fas fa-fw fa-solid fa-pen"></i>
                                                         </button>
-                                                    </a> -->
+                                                    </a>
                                                     <form method="POST">
                                                     <button class="ikon_delete" type="submit" name="submit_delete" value="<?= $row['id'] ?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">
                                                         <i class="fas fa-fw fa-solid fa-trash "></i>

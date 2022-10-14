@@ -20,69 +20,59 @@ if(isset($_POST['proses'])){
 ?>
 
 
-<section class="login-admin">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 bagian-kiri">
-<h2 class="judul">
-        <br> <span>Laporan Progress Pendataan (Kuisioner K)</span>
-    </h2>
 
-<form action="" method="post">
-    <table>
-    <section class="laporan-progres-pendataan">
-        <div class="box">
-            <label for="nama_petugas">Nama Petugas:</label>
-            <input type="teks" name="nama_petugas" id="">
+<section class="laporan-progres-pendataan">
+    <div class="container">
+        <div class="container row mb-5">
+            <h2 class="judul"> <br> <span>Laporan Progress Pendataan</span></h2>
         </div>
-        <div class="box">
-            <label for="kode_petugas">Kode Petugas:</label>
-            <input type="teks" name="kode_petugas" id="">
-        </div>
-        <div class="box">
-            <label for="kecamatan">Kecamatan:</label>
-            <input type="teks" name="kecamatan" id="">
-        </div>
-        <div class="box">
-            <label for="kode_kecamatan">Kode Kecamatan:</label>
-            <input type="teks" name="kode_kecamatan" id="">
-        </div>
-        <div class="box">
-            <label for="desa">Desa:</label>
-            <input type="teks" name="desa" id="">
-        </div>
-        <div class="box">
-            <label for="kode_desa">Kode Desa:</label>
-            <input type="teks" name="kode_desa" id="">
-        </div>
-        <div class="box">
-            <label for="wilkerstat">Kode Wilkerstat:</label>
-            <input type="teks" name="wilkerstat" id="">
-        </div>
-        <div class="box">
-            <label for="before_verif">Jumlah keluarga sebelum verifikasi:</label>
-            <input type="teks" name="before_verif" id="">
-        </div>
-        <div class="box">
-            <label for="after_verif">Jumlah keluarga setelah verifikasi:</label>
-            <input type="teks" name="after_verif" id="">
-        </div>
-        <div class="bux">
-            <label for="tanggal">Tanggal:</label>
-            <html>
-        <?php
-        echo "<br/>";
-        echo date('l, d-m-Y');
-        ?>
-    </section>
 
-    <tr>
-        <td></td>
-        <td><input type="submit" name="proses" value="Simpan"> </td>
-    </tr>
-</table>
-</table>
-</form>
+        <form action="" method="post" class="container form-isian-user">
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="nama_petugas">Nama Petugas:</label>
+                <input type="teks" class="form-control col-md-7" name="nama_petugas" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="kode_petugas">Kode Petugas:</label>
+                <input type="teks" class="form-control col-md-7" name="kode_petugas" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan:</label>
+                <input type="teks" class="form-control col-md-7" name="kecamatan" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="kode_kecamatan">Kode Kecamatan:</label>
+                <input type="teks" class="form-control col-md-7" name="kode_kecamatan" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="desa">Desa:</label>
+                <input type="teks" class="form-control col-md-7" name="desa" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="kode_desa">Kode Desa:</label>
+                <input type="teks" class="form-control col-md-7" name="kode_desa" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="wilkerstat">Kode Wilkerstat:</label>
+                <input type="teks" class="form-control col-md-7" name="wilkerstat" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="before_verif">Jumlah keluarga sebelum verifikasi:</label>
+                <input type="teks" class="form-control col-md-7" name="before_verif" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="after_verif">Jumlah keluarga setelah verifikasi:</label>
+                <input type="teks" class="form-control col-md-7" name="after_verif" id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="tanggal">Tanggal:</label>
+                <input type="teks" readonly class="form-control-plaintext col-md-7 text-lefts" value="<?php echo date('l, d-m-Y');?>">
+            </div>
+            
+            <input type="submit" name="proses" class="btn btn-primary" value="Simpan">
+        </form>
+    </div>
+</section>
     
 
     <!-- Optional JavaScript -->

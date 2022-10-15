@@ -1,12 +1,8 @@
 <?php
-ob_start();
+// ob_start();
 
 include "../includes/navbar.php";
 include "../../config.php";
-
-if(isset($_SESSION['username'])) {
-    header("Location: ../../index.php");
-}
 
 if (isset($_POST['register'])) {
     $username = $_POST['uname'];
@@ -26,7 +22,7 @@ if (isset($_POST['register'])) {
         $sql = "INSERT INTO `user`(`username`, `email`, `password`, `role`) VALUES ('$username','$email','$epassword','$role')";
         $result = mysqli_query($conn, $sql);
         if($result){
-            header("Location: index.php");
+            // header("Location: index.php");
             echo"<script>alert('Registrasi Sukses!')</script>";
         }else {
             echo"<script>alert('Woops! Something Wrong Went')</script>";

@@ -1,16 +1,16 @@
 <?php
 
-// session_start();
+session_start();
+// ob_start();
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: ../../login.php");
-// }
+if (!isset($_SESSION['username'])) {
+    header("Location: ../../login.php");
+}
 
 ?>
 
 <?php
     // session_start();
-    // ob_start();
 ?>
 
 
@@ -35,6 +35,20 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- CHART JS -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script> -->
 
 </head>
 
@@ -75,14 +89,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="../statistik-laporan">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Statistik Laporan</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="../laporan-harian">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Laporan Progress</span></a>
             </li>
@@ -174,7 +188,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="../../logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

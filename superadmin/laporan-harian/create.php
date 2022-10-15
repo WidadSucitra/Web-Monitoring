@@ -17,7 +17,6 @@ if(isset($_POST['proses'])){
     }else{
         move_uploaded_file($_FILES["berkas"]["tmp_name"], $target_file);
         mysqli_query($conn, "insert into laporan_harian set  
-        id = '$_POST[id]', 
         nama_folder = '$nama_folder',
         tanggal = '$_POST[tanggal]',
         size = '$size_berkas',
@@ -39,11 +38,11 @@ if(isset($_POST['proses'])){
     <Hr>
     <Form Action="create.Php" Method="Post" Enctype="Multipart/Form-Data">
         <B>Id :</B>
-        <Input Type="Text" Name="id" Value="" Placeholder="Masukkan Id"><Br /><Br />
+        <!-- <Input Type="Text" Name="id" Value="" Placeholder="Masukkan Id"><Br /><Br /> -->
         <!-- <B>Nama Folder :</B>
         <Input Type="Text" Name="nama_folder" Value="" Placeholder="Masukkan Nama Folder"><Br /><Br /> -->
         <B>Tanggal :</B>
-        <Input Type="Text" Name="tanggal" Value="" Placeholder="Masukkan Tanggal"><Br /><Br />
+        <Input Type="Date" Name="tanggal" Value="" Placeholder="Masukkan Tanggal"><Br /><Br />
         <B>Pilih File :</B>
         <Input Type="File" Name="berkas" Accept="Application/csv">
         <tr>

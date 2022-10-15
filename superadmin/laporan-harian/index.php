@@ -24,10 +24,11 @@ $result = mysqli_query($conn, $sql);
                         <?php foreach($result as $key=>$value){ ?>
                             <div class="card-body mx-3">
                                 <div class="alert alert-success row" role="alert">
-                                    <a href="#" class="alert-link col-md-10 nama_csv">
-                                        <?php echo $value['tanggal']; ?>
-                                    </a>
-                                    <Td><A Href="DownloadFile.csv?Url=<?Php Echo $value['berkas']; ?>">Download</A></Td>
+                                    <p href="#" class="alert-link col-md-10 nama_csv">
+                                        Laporan Harian <?php echo $value['tanggal']; ?>
+                                    </p>
+                                    <td><a href="download.php?file=<?php echo $value['berkas']; ?>">Download File</a></td>
+                                    <!-- <Td><A Href="DownloadFile.csv?Url=<?//Php Echo $value['berkas']; ?>">Download</A></Td> -->
                                 </div> 
                             </div>
                         <?php } ?>

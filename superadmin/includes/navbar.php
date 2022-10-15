@@ -96,7 +96,7 @@ if (!isset($_SESSION['username'])) {
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="../laporan-harian">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Laporan Progress</span></a>
             </li>

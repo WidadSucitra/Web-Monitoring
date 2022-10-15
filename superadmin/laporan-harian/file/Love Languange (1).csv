@@ -1,0 +1,10 @@
+<!-- $id = $_POST['id'];
+    $nama_folder = $_POST['nama_folder'];
+    $tanggal = $_POST['tanggal'];
+    $namaFile = $_FILES['berkas']['name'];
+    $X = explode('.', $namaFile);
+    $ekstensiFile = strtolower(end($X));
+    $ukuranFile    = $_FILES['berkas']['size'];
+    $file_tmp = $_FILES['berkas']['tmp_name']; -->
+
+tweetCreated,userName,userFollowerCt,tweetText,tweetRetweetCt

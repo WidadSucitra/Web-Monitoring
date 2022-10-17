@@ -7,11 +7,12 @@ include "../../config.php";
 if(isset($_POST['submit_delete'])){
     $dashboard_id = $_POST['submit_delete'];
   
-    $query = "DELETE FROM user WHERE id='$dashboard_id' LIMIT 1";
+    $query = "DELETE FROM report WHERE id='$dashboard_id' LIMIT 1";
     $query_run = mysqli_query($conn,$query);
   
     if($query_run)
       {
+        $_SESSION['message'] = "Something went wrong";
         header('Location: index.php');
         exit(0);
     }

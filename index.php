@@ -6,13 +6,16 @@ if(isset($_POST['proses'])){
     mysqli_query($conn, "insert into report set  
     nama_petugas = '$_POST[nama_petugas]',
     kode_petugas = '$_POST[kode_petugas]',
+    nama_pml = '$_POST[nama_pml]',
     kecamatan = '$_POST[kecamatan]',
     kode_kecamatan = '$_POST[kode_kecamatan]',
     desa = '$_POST[desa]',
     kode_desa = '$_POST[kode_desa]',
     wilkerstat = '$_POST[wilkerstat]',
+    nama_rt = '$_POST[nama_rt]',
     before_verif = '$_POST[before_verif]',
-    after_verif = '$_POST[after_verif]'");
+    after_verif = '$_POST[after_verif]',
+    total_k = '$_POST[total_k]'");
     
     echo "<script> alert('Laporan progress anda telah tersimpan')</script>";
     
@@ -24,45 +27,57 @@ if(isset($_POST['proses'])){
 <section class="laporan-progres-pendataan">
     <div class="container">
         <div class="container row mb-5">
-            <h2 class="judul"> <br> <span>Laporan Progress Pendataan</span></h2>
+            <h2 class="judul"> <br> <span>Laporan Progress Pendataan (Kuisioner K)</span></h2>
         </div>
 
         <form action="" method="post" class="container form-isian-user">
             <div class="box form-group row">
-                <label class="col-md-3 col-form-label" for="nama_petugas">Nama Petugas:</label>
-                <input type="teks" class="form-control col-md-7" name="nama_petugas" id="">
+                <label class="col-md-3 col-form-label" for="nama_petugas">Nama Petugas PPL:</label>
+                <input type="teks" class="form-control col-md-7" name="nama_petugas" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="kode_petugas">Kode Petugas:</label>
-                <input type="teks" class="form-control col-md-7" name="kode_petugas" id="">
+                <input type="teks" class="form-control col-md-7" name="kode_petugas" required id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="nama_petugas">Nama PML:</label>
+                <input type="teks" class="form-control col-md-7" name="nama_pml" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan:</label>
-                <input type="teks" class="form-control col-md-7" name="kecamatan" id="">
+                <input type="teks" class="form-control col-md-7" name="kecamatan" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="kode_kecamatan">Kode Kecamatan:</label>
-                <input type="teks" class="form-control col-md-7" name="kode_kecamatan" id="">
+                <input type="teks" class="form-control col-md-7" name="kode_kecamatan" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="desa">Desa:</label>
-                <input type="teks" class="form-control col-md-7" name="desa" id="">
+                <input type="teks" class="form-control col-md-7" name="desa" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="kode_desa">Kode Desa:</label>
-                <input type="teks" class="form-control col-md-7" name="kode_desa" id="">
+                <input type="teks" class="form-control col-md-7" name="kode_desa" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="wilkerstat">Kode Wilkerstat:</label>
-                <input type="teks" class="form-control col-md-7" name="wilkerstat" id="">
+                <input type="teks" class="form-control col-md-7" name="wilkerstat" required id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="nama_rt">Nama Wilayah RT/RW/Dusun <br> contoh: RT 01 Rw 01 Lingkungan Tombolo</label>
+                <input type="teks" class="form-control col-md-7" name="nama_rt" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="before_verif">Jumlah keluarga sebelum verifikasi:</label>
-                <input type="teks" class="form-control col-md-7" name="before_verif" id="">
+                <input type="teks" class="form-control col-md-7" name="before_verif" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="after_verif">Jumlah keluarga setelah verifikasi:</label>
-                <input type="teks" class="form-control col-md-7" name="after_verif" id="">
+                <input type="teks" class="form-control col-md-7" name="after_verif" required id="">
+            </div>
+            <div class="box form-group row">
+                <label class="col-md-3 col-form-label" for="total_k">Total K yang telah data:</label>
+                <input type="teks" class="form-control col-md-7" name="total_k" required id="">
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="tanggal">Tanggal:</label>

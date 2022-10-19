@@ -108,6 +108,13 @@ if (!isset($_SESSION['username'])) {
                     <span>Data Laporan</span></a>
             </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="../data-laporan/export-excel.php">
+                    <i class="fas fa-fw fa-solid fa-file-excel"></i>
+                    <span>Data Laporan</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

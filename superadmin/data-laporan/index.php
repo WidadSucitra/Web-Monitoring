@@ -69,25 +69,31 @@ if(isset($_POST['submit_delete'])){
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th class="align-middle text-center " >Nama Petugas</th>
+                                                <th class="align-middle text-center " >Nama Petugas PPL</th>
                                                 <th class="align-middle text-center " >Kode Petugas</th>
+                                                <th class="align-middle text-center " >Nama PML</th>
                                                 <th class="align-middle text-center " >Kecamatan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
+                                                <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
+                                                <th class="align-middle text-center " >Total K yang telah didata</th>
                                                 <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th class="align-middle text-center " >Nama Petugas</th>
+                                                <th class="align-middle text-center " >Nama Petugas PPL</th>
                                                 <th class="align-middle text-center " >Kode Petugas</th>
+                                                <th class="align-middle text-center " >Nama PML</th>
                                                 <th class="align-middle text-center " >Kecamatan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
+                                                <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
-                                                <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
+                                                <th class="align-middle text-center " >Jumlah Keluarga Hasil Verifikasi</th>
+                                                <th class="align-middle text-center " >Totall K yang telah didata</th>
                                                 <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </tfoot>
@@ -124,11 +130,14 @@ if(isset($_POST['submit_delete'])){
                                             <tr>
                                                 <td><?php echo $row['nama_petugas']; ?></td>
                                                 <td><?php echo $row['kode_petugas']; ?></td>
+                                                <td><?php echo $row['nama_pml']; ?></td>
                                                 <td><?php echo $row['kecamatan']; ?></td>
                                                 <td><?php echo $row['desa']; ?></td>
                                                 <td><?php echo $row['wilkerstat']; ?></td>
+                                                <td><?php echo $row['nama_rt']; ?></td>
                                                 <td><?php echo $row['before_verif']; ?></td>
                                                 <td><?php echo $row['after_verif']; ?></td>
+                                                <td><?php echo $row['total_k'];?></td>
                                                 <td class="text-center align-middle">
                                                     <!-- <a href="edit.php?id=<?= $row['id'] ?>">
                                                         <button  class="ikon_edit">

@@ -3,6 +3,27 @@
 
 include "../includes/navbar.php";
 include "../../config.php";
+
+if(isset($_POST['submit_delete'])){
+    $dashboard_id = $_POST['submit_delete'];
+  
+    $query = "DELETE FROM report WHERE id='$dashboard_id' LIMIT 1";
+    $query_run = mysqli_query($conn,$query);
+  
+    if($query_run)
+      {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: index.php');
+        exit(0);
+    }
+    else
+    {
+      $_SESSION['message'] = "Something went wrong";
+      header('Location: index.php');
+        exit(0);
+      }
+  }
+
 ?>
 
                 <!-- Begin Page Content -->
@@ -17,68 +38,49 @@ include "../../config.php";
                                 </div>
                             </div>
                             <form class="container" action="" method="post">
-                                <div class="form-group col-md-6 mt-3">
-                                    <label for="desa">Desa</label>
-                                    <select name="desa" id="" class="form-control">
-                                            <option value="">--select desa--</option>
-                                            <?php
-                                                $query = "SELECT DISTINCT desa FROM report";
-                                                $result = mysqli_query($conn, $query);
-    
-                                                if(!$result) {
-                                                    die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
-                                                }
-    
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                            ?>
-                                                <option value="<?php echo $row['desa']; ?>"> <?php echo $row['desa']; ?> </option>
-                                            <?php
-                                            }
-                                            ?>
-                                    </select>
-                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="tanggal">Tanggal</label>
                                     <input type="date" name="tanggal" class="form-control" id="" required>
                                 </div>
-                                <button class="ml-3 btn btn-primary" type="submit" name="filter" >Filter</button>
+                                <button class="ml-3 btn btn-primary" type="submit" name="export" >Download</button>
                             </form>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                <a href="download.php" target="_blank">
+                                    <button class="ml-3 btn btn-primary" type="submit" name="download" >Download</button>
+                                </a>
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th class="align-middle text-center " >Nama Petugas</th>
+                                                <th class="align-middle text-center " >Nama Petugas PPL</th>
                                                 <th class="align-middle text-center " >Kode Petugas</th>
                                                 <th class="align-middle text-center " >Nama PML</th>
                                                 <th class="align-middle text-center " >Kecamatan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
-                                                <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
-                                                <th class="align-middle text-center " >Total K yang telah didata</th>
+                                                <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th class="align-middle text-center " >Nama Petugas</th>
+                                                <th class="align-middle text-center " >Nama Petugas PPL</th>
                                                 <th class="align-middle text-center " >Kode Petugas</th>
                                                 <th class="align-middle text-center " >Nama PML</th>
                                                 <th class="align-middle text-center " >Kecamatan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
-                                                <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
-                                                <th class="align-middle text-center " >Total K yang telah didata</th>
+                                                <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
     
                                             <?php
-                                            if(isset($_POST['filter'])){
-                                                $desa = $_POST['desa'];
+                                            if(isset($_POST['export'])){
+                                                // $desa = $_POST['desa'];
                                                 $tanggal = $_POST['tanggal'];
 
                                                 // echo ($tanggal);
@@ -90,7 +92,7 @@ include "../../config.php";
                                                 // echo ($date);
                                             
 
-                                                $sql = "SELECT * FROM report WHERE desa='$desa' AND tanggal='$tanggal' ";
+                                                $sql = "SELECT * FROM report WHERE tanggal='$tanggal' ";
                                                 $result = mysqli_query($conn,$sql);
 
     
@@ -111,10 +113,20 @@ include "../../config.php";
                                                 <td><?php echo $row['kecamatan']; ?></td>
                                                 <td><?php echo $row['desa']; ?></td>
                                                 <td><?php echo $row['wilkerstat']; ?></td>
-                                                <td><?php echo $row['nama_rt']; ?></td>
                                                 <td><?php echo $row['before_verif']; ?></td>
                                                 <td><?php echo $row['after_verif']; ?></td>
-                                                <td><?php echo $row['total_k']; ?></td>
+                                                <td class="text-center align-middle">
+                                                    <!-- <a href="edit.php?id=<?= $row['id'] ?>">
+                                                        <button  class="ikon_edit">
+                                                            <i class="fas fa-fw fa-solid fa-pen"></i>
+                                                        </button>
+                                                    </a> -->
+                                                    <form method="POST">
+                                                    <button class="ikon_delete" type="submit" name="submit_delete" value="<?= $row['id'] ?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">
+                                                        <i class="fas fa-fw fa-solid fa-trash "></i>
+                                                    </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             
                                             <?php

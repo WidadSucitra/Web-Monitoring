@@ -38,17 +38,41 @@ if(isset($_POST['submit_delete'])){
                                 </div>
                             </div>
                             <form class="container" action="" method="post">
+                                <div class="form-group col-md-6 mt-3">
+                                    <label for="desa">Desa</label>
+                                    <select name="desa" id="" class="form-control">
+                                            <option value="">--select desa--</option>
+                                            <?php
+                                                $query = "SELECT DISTINCT desa FROM report";
+                                                $result = mysqli_query($conn, $query);
+    
+                                                if(!$result) {
+                                                    die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                                                }
+    
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                                <option value="<?php echo $row['desa']; ?>"> <?php echo $row['desa']; ?> </option>
+                                            <?php
+                                            }
+                                            ?>
+                                    </select>
+                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="tanggal">Tanggal</label>
                                     <input type="date" name="tanggal" class="form-control" id="" required>
                                 </div>
-                                <button class="ml-3 btn btn-primary" type="submit" name="export" >Download</button>
+                                <button class="ml-3 btn btn-primary" type="submit" name="filter" >Filter</button>
+                            </form>
+                            <form method="post">
+                                <div class="form-group col-md-6">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" id="" required>
+                                </div>
+                                <td><a href="download.php">Download File</a></td>
                             </form>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                <a href="download.php" target="_blank">
-                                    <button class="ml-3 btn btn-primary" type="submit" name="download" >Download</button>
-                                </a>
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
@@ -58,8 +82,10 @@ if(isset($_POST['submit_delete'])){
                                                 <th class="align-middle text-center " >Kecamatan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
+                                                <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
+                                                <th class="align-middle text-center " >Total K yang telah didata</th>
                                                 <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </thead>
@@ -71,16 +97,18 @@ if(isset($_POST['submit_delete'])){
                                                 <th class="align-middle text-center " >Kecamatan</th>
                                                 <th class="align-middle text-center " >Desa/Kelurahan</th>
                                                 <th class="align-middle text-center " >Kode Wilkerstat</th>
+                                                <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
-                                                <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
+                                                <th class="align-middle text-center " >Jumlah Keluarga Hasil Verifikasi</th>
+                                                <th class="align-middle text-center " >Totall K yang telah didata</th>
                                                 <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
     
                                             <?php
-                                            if(isset($_POST['export'])){
-                                                // $desa = $_POST['desa'];
+                                            if(isset($_POST['filter'])){
+                                                $desa = $_POST['desa'];
                                                 $tanggal = $_POST['tanggal'];
 
                                                 // echo ($tanggal);
@@ -92,7 +120,7 @@ if(isset($_POST['submit_delete'])){
                                                 // echo ($date);
                                             
 
-                                                $sql = "SELECT * FROM report WHERE tanggal='$tanggal' ";
+                                                $sql = "SELECT * FROM report WHERE desa='$desa' AND tanggal='$tanggal' ";
                                                 $result = mysqli_query($conn,$sql);
 
     
@@ -113,8 +141,10 @@ if(isset($_POST['submit_delete'])){
                                                 <td><?php echo $row['kecamatan']; ?></td>
                                                 <td><?php echo $row['desa']; ?></td>
                                                 <td><?php echo $row['wilkerstat']; ?></td>
+                                                <td><?php echo $row['nama_rt']; ?></td>
                                                 <td><?php echo $row['before_verif']; ?></td>
                                                 <td><?php echo $row['after_verif']; ?></td>
+                                                <td><?php echo $row['total_k'];?></td>
                                                 <td class="text-center align-middle">
                                                     <!-- <a href="edit.php?id=<?= $row['id'] ?>">
                                                         <button  class="ikon_edit">

@@ -15,7 +15,8 @@ if(isset($_POST['proses'])){
     nama_rt = '$_POST[nama_rt]',
     before_verif = '$_POST[before_verif]',
     after_verif = '$_POST[after_verif]',
-    total_k = '$_POST[total_k]'");
+    total_k = '$_POST[total_k]',
+    catatan = '$_POST[catatan]'");
     
     echo "<script> alert('Laporan progress anda telah tersimpan')</script>";
     
@@ -78,6 +79,13 @@ if(isset($_POST['proses'])){
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="total_k">Total K yang telah data:</label>
                 <input type="teks" class="form-control col-md-7" name="total_k" required id="">
+            </div>
+            <div class="box form-group row">
+                <div class="col-md-3">
+                    <label class="col-form-label" for="catatan">Catatan:</label>
+                    <small id="role-ket" class="form-text text-muted">jika tidak ada, isi dengan garis (-)</small>
+                </div>
+                <textarea class="form-control col-md-7" name="catatan" rows="5" required id=""></textarea>
             </div>
             <div class="box form-group row">
                 <label class="col-md-3 col-form-label" for="tanggal">Tanggal:</label>

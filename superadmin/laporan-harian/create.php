@@ -36,8 +36,8 @@ if(isset($_POST['proses'])){
                         <Body Style="Margin: Auto; Padding: 10px;">
     <H2 Style="Text-Align: Center;">Form Upload File</H2>
     <Hr>
-    <Form Action="create.Php" Method="Post" Enctype="Multipart/Form-Data">
-        <B>Id :</B>
+    <Form Action="create.php" Method="Post" Enctype="Multipart/Form-Data">
+        <!-- <B>Id :</B> -->
         <!-- <Input Type="Text" Name="id" Value="" Placeholder="Masukkan Id"><Br /><Br /> -->
         <!-- <B>Nama Folder :</B>
         <Input Type="Text" Name="nama_folder" Value="" Placeholder="Masukkan Nama Folder"><Br /><Br /> -->

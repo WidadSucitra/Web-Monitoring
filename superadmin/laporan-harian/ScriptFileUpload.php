@@ -1,7 +1,6 @@
 <?Php 
     include "../../config.php";
     
-    $id = $_POST['id'];
     $nama_folder = $_POST['nama_folder'];
     $tanggal = $_POST['tanggal'];
     $namaFile = $_FILES['berkas']['name'];
@@ -18,7 +17,6 @@
     $terupload = move_uploaded_file($file_tmp, $linkBerkas);
 
     $dataArr = array(
-        'id' => $id, 
         'nama_buku' => $nama_folder,
         'tanggal' => $tanggal,
         'title' => $namaFile, 
@@ -29,11 +27,11 @@
 
     if ($terupload && (insertData($dataArr) == 1)) {
         echo "Upload Berhasil!";
-        header("Location: index.Php", True, 301);
+        header("Location: index.php", True, 301);
         exit();
     } else {
         echo "Upload Gagal!";
-        header("Location: create.Php", True, 301);
+        header("Location: create.php", True, 301);
         exit();
     }
 

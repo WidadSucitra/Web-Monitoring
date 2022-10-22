@@ -23,7 +23,7 @@ include "../../config.php";
                                     <select name="desa" id="" class="form-control">
                                             <option value="">--select desa--</option>
                                             <?php
-                                                $query = "SELECT DISTINCT desa FROM report";
+                                                 $query = "SELECT DISTINCT desa FROM report ORDER BY desa ASC";
                                                 $result = mysqli_query($conn, $query);
     
                                                 if(!$result) {

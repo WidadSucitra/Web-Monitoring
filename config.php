@@ -5,6 +5,12 @@ $user = "root";
 $pass = "";
 $database = "monitoring";
 
+// $server = "sql203.epizy.com";
+// $user = "epiz_32803333";
+// $pass = "Ae9AE8IYtk";
+// $database = "epiz_32803333_monitoring";
+
+
 $conn = mysqli_connect($server, $user, $pass, $database);
 
 if (!$conn) {

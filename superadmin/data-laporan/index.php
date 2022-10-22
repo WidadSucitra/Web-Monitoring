@@ -32,38 +32,84 @@ if(isset($_POST['submit_delete'])){
     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
+                            <div class="card-header py-3 mb-5">
                                 <div class="col-md judul">
                                     <h6 class="m-0 font-weight-bold text-primary">Laporan Progress</h6>
                                 </div>
                             </div>
-                            <form class="container" action="" method="post">
-                                <div class="form-group col-md-6 mt-3">
-                                    <label for="desa">Desa</label>
-                                    <select name="desa" id="" class="form-control">
-                                            <option value="">--select desa--</option>
-                                            <?php
-                                                $query = "SELECT DISTINCT desa FROM report";
-                                                $result = mysqli_query($conn, $query);
-    
-                                                if(!$result) {
-                                                    die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
-                                                }
-    
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                            ?>
-                                                <option value="<?php echo $row['desa']; ?>"> <?php echo $row['desa']; ?> </option>
-                                            <?php
-                                            }
-                                            ?>
-                                    </select>
+                            <div class="row">
+                                <div class="col-md">
+                                    <form class="container" action="" method="post">
+                                        <div class="form-group row">
+                                            <label for="desa">Desa</label>
+                                            <select name="desa" id="" class="form-control">
+                                                    <option value="">--select desa--</option>
+                                                    <?php
+                                                        $query = "SELECT DISTINCT desa FROM report ORDER BY desa ASC";
+                                                        $result = mysqli_query($conn, $query);
+            
+                                                        if(!$result) {
+                                                            die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                                                        }
+            
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
+                                                        <option value="<?php echo $row['desa']; ?>"> <?php echo $row['desa']; ?> </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tanggal">Tanggal</label>
+                                            <input type="date" name="tanggal" class="form-control" id="" required>
+                                        </div>
+                                        <button class="ml-3 btn btn-primary" type="submit" name="filter" >Filter</button>
+                                    </form>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="tanggal">Tanggal</label>
-                                    <input type="date" name="tanggal" class="form-control" id="" required>
+                                <div class="col-md">
+                                    <form action="download.php" class="container" method="post">
+                                    <div class="form-group row">
+                                            <label for="tanggal">Tanggal</label>
+                                            <input type="date" name="tanggal" class="form-control" id="" required>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit" name="download" >download</button>
+    
+                                    </form>
                                 </div>
-                                <button class="ml-3 btn btn-primary" type="submit" name="filter" >Filter</button>
-                            </form>
+                            </div>
+                            
+                                <?php
+                                if(isset($_POST['filter'])){
+                                    $desa = $_POST['desa'];
+                                    $tanggal = $_POST['tanggal'];
+
+                                    $str= $tanggal;
+                                    $explode=explode("-",$str);
+
+                                    // echo ($tanggal);
+
+                                    // $date= "'".date('Y-m-d', strtotime(str_replace('-', '/', $tanggal)));
+
+                                    // $date= date_format($tanggal,"Y/m/d");
+
+                                    // echo ($date);
+                                
+
+                                    $sql = "SELECT * FROM report WHERE desa='$desa' AND tanggal='$tanggal' ";
+                                    $result = mysqli_query($conn,$sql);
+
+
+                                    // $query = "SELECT * FROM report ORDER BY id ASC";
+                                    // $result = mysqli_query($conn, $query);
+
+                                    if(!$result) {
+                                        die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
+                                        }
+                                ?>
+
+                                <h5 class="text-center font-weight-bold text-primary mb-2" >Laporan Progress Desa <?php echo $desa ?> <br>Tanggal <?php echo $explode[2]?>-<?php echo $explode[1]?>-<?php echo $explode[0]?></h5>
+                                <?php } ?>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -79,6 +125,7 @@ if(isset($_POST['submit_delete'])){
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Hassil Verifikasi</th>
                                                 <th class="align-middle text-center " >Total K yang telah didata</th>
+                                                <th class="align-middle text-center " >Catatan</th>
                                                 <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </thead>
@@ -93,16 +140,21 @@ if(isset($_POST['submit_delete'])){
                                                 <th class="align-middle text-center " >Nama RT</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Sebelum Verifikasi</th>
                                                 <th class="align-middle text-center " >Jumlah Keluarga Hasil Verifikasi</th>
-                                                <th class="align-middle text-center " >Totall K yang telah didata</th>
+                                                <th class="align-middle text-center " >Total K yang telah didata</th>
+                                                <th class="align-middle text-center " >Catatan</th>
                                                 <th class="align-middle text-center " >Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-    
-                                            <?php
+
+
+                                        <?php
                                             if(isset($_POST['filter'])){
                                                 $desa = $_POST['desa'];
                                                 $tanggal = $_POST['tanggal'];
+
+                                                $str= $tanggal;
+                                                $explode=explode("-",$str);
 
                                                 // echo ($tanggal);
 
@@ -116,14 +168,13 @@ if(isset($_POST['submit_delete'])){
                                                 $sql = "SELECT * FROM report WHERE desa='$desa' AND tanggal='$tanggal' ";
                                                 $result = mysqli_query($conn,$sql);
 
-    
+
                                                 // $query = "SELECT * FROM report ORDER BY id ASC";
                                                 // $result = mysqli_query($conn, $query);
-    
+
                                                 if(!$result) {
                                                     die("Query Error : ".mysqli_errno($conn)." - ".mysqli_errno($conn));
-                                                }
-    
+                                                    }
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
                                                                         
@@ -138,6 +189,7 @@ if(isset($_POST['submit_delete'])){
                                                 <td><?php echo $row['before_verif']; ?></td>
                                                 <td><?php echo $row['after_verif']; ?></td>
                                                 <td><?php echo $row['total_k'];?></td>
+                                                <td><?php echo $row['catatan'];?></td>
                                                 <td class="text-center align-middle">
                                                     <!-- <a href="edit.php?id=<?= $row['id'] ?>">
                                                         <button  class="ikon_edit">
